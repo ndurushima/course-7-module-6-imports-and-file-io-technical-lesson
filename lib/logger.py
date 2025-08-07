@@ -4,13 +4,12 @@ import os
 LOG_PATH = "data/user_logs.txt"
 
 def log_action(action, log_file=LOG_PATH):
-    """Append a user action with a timestamp to the log file."""
-    # TODO: Ensure the log file directory exists
-    # TODO: Generate current timestamp
-    # TODO: Open the log file in append mode
-    # TODO: Write a formatted log entry with timestamp and action
-    # TODO: Print confirmation message to the user
-    pass
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(log_file, 'a') as file:
+        file.write(f"{timestamp} - {action}\n")
+
+log_action("User logged in")
+log_action("User updated profile")
 
 def search_logs(keyword, log_file=LOG_PATH):
     """Search the log file for lines that match a keyword."""
