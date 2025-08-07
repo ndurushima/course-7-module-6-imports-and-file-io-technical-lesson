@@ -12,9 +12,12 @@ log_action("User logged in")
 log_action("User updated profile")
 
 def search_logs(keyword, log_file=LOG_PATH):
-    """Search the log file for lines that match a keyword."""
-    # TODO: Try opening the log file for reading
-    # TODO: Read each line and filter for lines that include the keyword (case insensitive)
-    # TODO: Print matched log lines or a 'not found' message
-    # TODO: Handle FileNotFoundError gracefully
-    pass
+    try:
+        with open("user_logs.txt", "r") as file:
+            for line in file:
+                if keyword in line:
+                    print(line.strip())
+    except FileNotFoundError:
+        print("Log file not found")
+
+search_logs("profile")
